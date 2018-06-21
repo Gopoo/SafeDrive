@@ -3,5 +3,12 @@
     <color name="colorAccent">#fd7b30</color>
     <color name="colorPrimary">#292A34</color>
     <color name="colorPrimaryDark">#292A34</color>
+    <color name="colorGray">#3d3e48</color>
     <color name="color_common_bg_orange">#fd7b30</color>
+    <color name="color_common_bg_orange_dark">#fd6000</color>
+    <color name="color_common_bg_orange_lite">#ffaa64</color>
+    <color name="color_white">#ffffff</color>
+    <color name="color_white2">#fafafa</color>
+    <color name="color_white3">#dadada</color>
+    <color name="color_divider">#aaaaaa</color>
 </resources>
