@@ -16,15 +16,44 @@
         app:contentInsetLeft="0dp"
         app:contentInsetStart="0dp">
 
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tabs"
-            android:layout_width="150dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            app:tabTextAppearance="@style/BigTextAppearance"
-            app:tabMode="fixed"
-            app:tabSelectedTextColor="@color/color_white"
-            app:tabTextColor="@color/color_white" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_callphone"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_margin="3dp"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/ic_phone_black_24dp"
+                tools:ignore="VectorDrawableCompat" />
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tabs"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                app:tabMode="fixed"
+                app:tabSelectedTextColor="@color/color_white"
+                app:tabTextAppearance="@style/BigTextAppearance"
+                app:tabTextColor="@color/color_white" />
+
+            <ImageView
+                android:id="@+id/iv_settings"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_margin="3dp"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/ic_settings_black_24dp"
+                tools:ignore="VectorDrawableCompat" />
+        </RelativeLayout>
+
     </android.support.v7.widget.Toolbar>
 
     <LinearLayout
@@ -41,7 +70,7 @@
         <Button
             android:id="@+id/btn_start"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="55dp"
             android:background="@drawable/start_button"
             android:text="开始检测"
             android:textColor="#f0f0f0" />

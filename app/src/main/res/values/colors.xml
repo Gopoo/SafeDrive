@@ -4,6 +4,7 @@
     <color name="colorPrimary">#292A34</color>
     <color name="colorPrimaryDark">#292A34</color>
     <color name="colorGray">#3d3e48</color>
+    <color name="colorGrayLite">#777777</color>
     <color name="color_common_bg_orange">#fd7b30</color>
     <color name="color_common_bg_orange_dark">#fd6000</color>
     <color name="color_common_bg_orange_lite">#ffaa64</color>

@@ -1,8 +1,7 @@
-package com.didi.safedrive.dialog;
+package com.didi.safedrive.view;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.view.View;
@@ -76,6 +75,9 @@ public class CarDialog extends Dialog {
 
             @Override
             public void onFinish() {
+                if (mListener != null) {
+                    mListener.onAction();
+                }
                 CarDialog.this.dismiss();
             }
         };
@@ -84,18 +86,12 @@ public class CarDialog extends Dialog {
     @Override
     public void dismiss() {
         super.dismiss();
-        if (mListener != null) {
-            mListener.onDismiss();
-        }
         mTimer.cancel();
     }
 
     @Override
     public void show() {
         super.show();
-        if (mListener != null) {
-            mListener.onShow();
-        }
         updateView();
         mTimer.start();
     }

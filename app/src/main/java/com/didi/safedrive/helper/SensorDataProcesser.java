@@ -1,10 +1,12 @@
 package com.didi.safedrive.helper;
 
+import android.util.Log;
+
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public class SensorDataProcesser {
-
+    private static boolean sDebug = true;
     private static final int WINDOWS = 10;
     private int mWindowSize = WINDOWS;
     private LinkedList mDataQueue;
@@ -24,7 +26,7 @@ public class SensorDataProcesser {
             while (i.hasNext()) {
                 float num = (float) i.next();
                 sum += num;
-                if (num > 12f) {
+                if (num > 8f) {
                     danger++;
                 } else if (num > 5f) {
                     normal++;
@@ -33,12 +35,16 @@ public class SensorDataProcesser {
                 }
             }
             mDataQueue.poll();
-            if (sum >= 100f || danger > normal || danger > easy || danger >= 2) {
+            if (sum >= 70f || danger > 1) {
+                if (sDebug) {
+                    Log.w("hgp", "3," + sum + "," + easy + "," + normal + "," + danger);
+                }
                 result = 3;  //突然出现碰撞
-            } else if (sum > 50f || normal > easy || normal > danger) {
+            } else if (normal > mWindowSize - 2 && danger == 0 && sum > 35) {
+                if (sDebug) {
+                    Log.w("hgp", "2," + sum + "," + easy + "," + normal + "," + danger);
+                }
                 result = 2;  //加速度过大
-            } else if (easy >= 6) {
-                result = 1;   //平稳
             }
 
         }
