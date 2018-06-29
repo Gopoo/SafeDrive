@@ -25,9 +25,6 @@ import android.widget.ImageView;
 import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
-import com.baidu.tts.client.SpeechSynthesizeBag;
-import com.baidu.tts.client.SpeechSynthesizer;
-import com.baidu.tts.client.TtsMode;
 import com.didi.safedrive.fragment.CarFragment;
 import com.didi.safedrive.fragment.ManFragment;
 import com.didi.safedrive.helper.LocHelper;
@@ -92,12 +89,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 SettingSharedPrefHelper helper = new SettingSharedPrefHelper();
                 String phone = helper.getString("phone", "10086");
-                SmsUtils.callPhone(phone,MainActivity.this);
+                SmsUtils.callPhone(phone, MainActivity.this);
             }
         });
         initViewPager();
         initSensor();
-        initTTSSDK();
     }
 
     private void initSensor() {
@@ -113,14 +109,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void initTTSSDK(){
-        SpeechSynthesizer mSpeechSynthesizer = SpeechSynthesizer.getInstance();
-        mSpeechSynthesizer.setContext(this); // this 是Context的之类，如Activity
-        mSpeechSynthesizer.setAppId(AppId);
-        mSpeechSynthesizer.setApiKey(AppKey,AppSecret);
-        mSpeechSynthesizer.auth(TtsMode.MIX);
-        mSpeechSynthesizer.initTts(TtsMode.MIX);
-    }
 
     private void initViewPager() {
         mTabLayout.addTab(mTabLayout.newTab());
@@ -169,7 +157,6 @@ public class MainActivity extends AppCompatActivity {
                         Manifest.permission.ACCESS_WIFI_STATE,
                         Manifest.permission.CALL_PHONE,
                         Manifest.permission.SEND_SMS,
-                        Manifest.permission.MODIFY_AUDIO_SETTINGS
                 }, 0);
             }
     }
@@ -186,8 +173,6 @@ public class MainActivity extends AppCompatActivity {
                         || ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                         != PackageManager.PERMISSION_GRANTED
                         || ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE)
-                        != PackageManager.PERMISSION_GRANTED
-                        || ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_WIFI_STATE)
                         != PackageManager.PERMISSION_GRANTED) {
                     finish();
                 }
